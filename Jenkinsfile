@@ -34,7 +34,7 @@ pipeline {
             steps{
 
                 sh """
-                sed -i 's|image:.*|image:$IMAGE_NAME:$IMAGE_TAG|' deployment.yml
+                sed -i 's|image:.*|image: $IMAGE_NAME:$IMAGE_TAG|' deployment.yml
                 """ 
 
                 sh 'kubectl apply -f deployment.yml'
