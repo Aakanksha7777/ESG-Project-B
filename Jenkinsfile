@@ -18,18 +18,18 @@ pipeline {
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
             }
          }
-        stage('Push Docker image'){
-             steps {   
-                  withCredentials([usernamePassword(
-                      credentialsId: 'dockerhub-creds',
-                      usernameVariable: 'DOCKER_USER',
-                      passwordVariable: 'DOCKER_PASS'
-                  )]) {
-                  sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                  sh 'docker push $IMAGE_NAME:$IMAGE_TAG'     
-                }
-             }
-         } 
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(
+            credentialsId: 'dockerhub-creds',
+            usernameVariable: 'DOCKER_USER',
+            passwordVariable: 'DOCKER_PASS'
+        )]) {
+            sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+            sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+        }
+    }
+}
         stage('Update Kubernetes Deployment'){
             steps{
 
