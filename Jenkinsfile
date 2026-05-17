@@ -10,7 +10,7 @@ pipeline {
     stages{
         stage('Clone Code'){
             steps {
-                git 'https://github.com/Aakanksha7777/ESG-Project-B.git'
+                git branch: 'main', url: 'https://github.com/Aakanksha7777/ESG-Project-B.git'
             }
         }         
         stage('Build Docker Image'){
