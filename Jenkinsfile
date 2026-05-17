@@ -5,7 +5,7 @@ pipeline {
     
     environment{
         IMAGE_NAME = "aakanksha0017/myapp"
-        IMAGE_TAG = "{$v1}"
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
     stages{
         stage('Clone Code'){
