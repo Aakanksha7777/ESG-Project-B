@@ -37,8 +37,8 @@ pipeline {
                 sed -i 's|image:.*|image: $IMAGE_NAME:$IMAGE_TAG|' deployment.yml
                 """ 
 
-                sh 'kubectl apply -f deployment.yml'
-                sh 'kubectl apply -f service.yml'  
+               sh 'kubectl apply --validate=false -f deployment.yml'
+               sh 'kubectl apply --validate=false -f service.yml' 
         
             }
         }
